@@ -8,7 +8,7 @@ Self-Driving Car Engineer Nanodegree Program
 
 ## Introduction
 
-This directory contains an implementation of a Model Predictive Controller for a Self-Driving Car NanoDegree from Udacity. The goal of the project is to make the car drive along waypoints on a race track in a [simulator](https://github.com/udacity/self-driving-car-sim/releases), 
+This directory contains an implementation of a Model Predictive Controller for a Self-Driving Car NanoDegree from Udacity. The goal of the project is to make the car drive along waypoints on a race track in a [simulator](https://github.com/udacity/self-driving-car-sim/releases). 
 
 ## Discussion
 
@@ -18,12 +18,29 @@ The model used in this project is a kinematic model which includes 6 state varia
 
 The model uses previous step state variables and actuations to estimate the current step state variables according to the equation set below:
 
+\begin{align*}
 x_{t+1} = x_{t} + v_{t} * \cos(\psi_{t}) * dt
+\end{align*}
+
+\begin{align*}
 y_{t+1} = y_{t} + v_{t} * \sin(\psi_{t}) * dt
+\end{align*}
+
+\begin{align*}
 \psi_{t+1} = \psi_{t} + v_{t}/L_{f} * \delta_{t} * dt
+\end{align*}
+
+\begin{align*}
 v_{t+1} = v_{t} + a_{t} * dt
+\end{align*}
+
+\begin{align*}
 cte_{t+1} = f(x_{t}) -y_{t} + (v_{t}*sin(e\psi_{t}) * dt)
+\end{align*}
+
+\begin{align*}
 e\psi_{t+1} = \psi_{t+1} - \psi des_{t}+ (v_{t}/L_{f} * \delta_{t} * dt)
+\end{align*}
 
 ### Timestep Length and Elapsed Duration (N & dt)
 
