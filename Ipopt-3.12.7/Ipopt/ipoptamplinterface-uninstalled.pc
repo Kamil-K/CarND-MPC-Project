@@ -1,0 +1,10 @@
+prefix=/usr/local
+libdir=/mnt/d/Studies-MOOCs/2017-02_Self-Driving-Car_NanoDegree_Udacity/Self_Driving_Car_Projects/6_MPC_Project/CarND-MPC-Project/Ipopt-3.12.7/Ipopt/src/Apps/AmplSolver
+
+Name: IPOPT
+Description: Ampl Interface TNLP to Ipopt
+URL: https://projects.coin-or.org/Ipopt
+Version: 3.12.7
+Libs: ${libdir}/libipoptamplinterface.la 
+Cflags: -I/mnt/d/Studies-MOOCs/2017-02_Self-Driving-Car_NanoDegree_Udacity/Self_Driving_Car_Projects/6_MPC_Project/CarND-MPC-Project/Ipopt-3.12.7/Ipopt/src/Apps/AmplSolver
+Requires: ipopt coinasl 
