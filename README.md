@@ -22,6 +22,8 @@ The model uses previous step state variables and actuations to estimate the curr
 x_{t+1} = x_{t} + v_{t} * \cos(\psi_{t}) * dt
 \end{align*}
 
+![equation](http://www.codecogs.com/eqnedit.php?latex=x_{t&plus;1}=x_{t}&plus;v_{t}*\cos(\psi_{t})*dt)
+
 \begin{align*}
 y_{t+1} = y_{t} + v_{t} * \sin(\psi_{t}) * dt
 \end{align*}
