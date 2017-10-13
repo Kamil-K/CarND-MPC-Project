@@ -18,38 +18,15 @@ The model used in this project is a kinematic model which includes 6 state varia
 
 The model uses previous step state variables and actuations to estimate the current step state variables according to the equation set below:
 
-\begin{align*}
-x_{t+1}=x_{t}+v_{t}*\cos(\psi_{t})*dt
-\end{align*}
-
 ![equation](http://latex.codecogs.com/gif.latex?x_%7Bt&plus;1%7D%3Dx_%7Bt%7D&plus;v_%7Bt%7D*%5Ccos%28%5Cpsi_%7Bt%7D%29*dt)
-
-\begin{align*}
-y_{t+1}=y_{t}+v_{t}*\sin(\psi_{t})*dt
-\end{align*}
 
 ![equation](http://latex.codecogs.com/gif.latex?y_%7Bt&plus;1%7D%3Dy_%7Bt%7D&plus;v_%7Bt%7D*%5Csin%28%5Cpsi_%7Bt%7D%29*dt)
 
-\begin{align*}
-\psi_{t+1}=\psi_{t}+v_{t}/L_{f}*\delta_{t}*dt
-\end{align*}
-
 ![equation](http://latex.codecogs.com/gif.latex?%5Cpsi_%7Bt&plus;1%7D%3D%5Cpsi_%7Bt%7D&plus;v_%7Bt%7D/L_%7Bf%7D*%5Cdelta_%7Bt%7D*dt)
-
-\begin{align*}
-v_{t+1}=v_{t}+a_{t}*dt
-\end{align*}
 
 ![equation](http://latex.codecogs.com/gif.latex?v_%7Bt&plus;1%7D%3Dv_%7Bt%7D&plus;a_%7Bt%7D*dt)
 
-\begin{align*}
-cte_{t+1}=f(x_{t})-y_{t}+(v_{t}*sin(e\psi_{t})*dt)
-\end{align*}
 ![equation](http://latex.codecogs.com/gif.latex?cte_%7Bt&plus;1%7D%3Df%28x_%7Bt%7D%29-y_%7Bt%7D&plus;%28v_%7Bt%7D*sin%28e%5Cpsi_%7Bt%7D%29*dt%29)
-
-\begin{align*}
-e\psi_{t+1}=\psi_{t+1}-\psides_{t}+(v_{t}/L_{f}*\delta_{t}*dt)
-\end{align*}
 
 ![equation](http://latex.codecogs.com/gif.latex?e%5Cpsi_%7Bt&plus;1%7D%3D%5Cpsi_%7Bt&plus;1%7D-%5Cpsides_%7Bt%7D&plus;%28v_%7Bt%7D/L_%7Bf%7D*%5Cdelta_%7Bt%7D*dt%29)
 
