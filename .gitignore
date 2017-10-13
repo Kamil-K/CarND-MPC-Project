@@ -3,3 +3,6 @@ build
 tags
 .editorconfig
 .DS_Store
+myrun.sh
+readme_local.txt
+Ipopt-3.12.7
