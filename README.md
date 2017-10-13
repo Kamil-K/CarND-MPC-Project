@@ -1,5 +1,45 @@
-# CarND-Controls-MPC
+Kamil Kaczmarczyk
+2017-10-13
+
+# Model Predictive Controller Project
 Self-Driving Car Engineer Nanodegree Program
+
+![alt tex](https://github.com/Kamil-K/CarND-MPC-Project/blob/master/pics/pic1.PNG "Successful Run")
+
+## Introduction
+
+This directory contains an implementation of a Model Predictive Controller for a Self-Driving Car NanoDegree from Udacity. The goal of the project is to make the car drive along waypoints on a race track in a [simulator](https://github.com/udacity/self-driving-car-sim/releases), 
+
+## Discussion
+
+### The Model
+
+The model used in this project is a kinematic model which includes 6 state variables such as x- and y- coordinates, psi- orientation angle, v- velocity, cte- cross-track-error, epsi- orientation error as well as 2 actuator variables such as a- acceleration and delta- steering angle.
+
+The model uses previous step state variables and actuations to estimate the current step state variables according to the equation set below:
+
+x_{t+1} = x_{t} + v_{t} * \cos(\psi_{t}) * dt
+y_{t+1} = y_{t} + v_{t} * \sin(\psi_{t}) * dt
+\psi_{t+1} = \psi_{t} + v_{t}/L_{f} * \delta_{t} * dt
+v_{t+1} = v_{t} + a_{t} * dt
+cte_{t+1} = f(x_{t}) -y_{t} + (v_{t}*sin(e\psi_{t}) * dt)
+e\psi_{t+1} = \psi_{t+1} - \psi des_{t}+ (v_{t}/L_{f} * \delta_{t} * dt)
+
+### Timestep Length and Elapsed Duration (N & dt)
+
+The final values are (N = 10; dt = 0.1) and other values tried are (N = 25; dt = 0.05), (N = 15; dt = 0.1) and (N = 5; dt = 0.1). The other values tried produced a behaviour with diverging trajectories around the optimal driving path. The method used was simple a trial and error to find the optimal values. The explanation could be that the final values give a horizon of 1 sec which seems pretty reasonable considering the variability of the track and also give 10 points to optmize for which also seems not too many to not be computationally too expensive. Additionally as it happened the value of dt is in this case corresponding to the latency of the system of 100ms which was used in the later part of the project.
+
+### Polynomial Fitting and MPC Preprocessing
+
+To simplify the calculations the waypoints are transformed into the reference frame of the vehicle. This means that the x and y coordinates as well as the orientation angle psi become now zero and hence it is computationally cheaper to fit the polynomial.
+
+### Model Predictive Control with Latency
+
+In this work the latency of 100ms is imposed. Accidentaly the step value dt is also chosen to be equal to 0.1 sec. This simplifies the implementation step to account for this latency by taking the actuation values shifted by one step dt (of course if time step is greater than 1). The code for this implementation can be found in the MPC.cpp file in lines 116-119.
+
+## YouTube video of the final ride
+Click [here](https://youtu.be/k7uus1uyVm0) or on the image below to go to the YouTube video)<p>
+[![MPC Track Ride](https://img.youtube.com/vi/k7uus1uyVm0/0.jpg)](https://youtu.be/k7uus1uyVm0)
 
 ---
 

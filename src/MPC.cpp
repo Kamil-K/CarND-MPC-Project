@@ -21,7 +21,7 @@ double dt = 0.1;	//this will also serve as the latency value
 // This is the length from front to CoG that has a similar radius.
 const double Lf = 2.67;
 
-double ref_v = 80;	//good refence speed, anything faster is almost impossible on the track
+double ref_v = 75;	//good refence speed, anything faster is almost impossible on the track
 
 size_t x_start = 0;
 size_t y_start = x_start + N;
@@ -63,7 +63,7 @@ class FG_eval {
       fg[0] += 100*CppAD::pow(vars[delta_start + i], 2);
       fg[0] += 10*CppAD::pow(vars[a_start + i], 2);
 	  // add penalty for breaking
-	  fg[0] += 10*CppAD::pow(-abs(vars[a_start + i]), 2);
+	  fg[0] += 5*CppAD::pow(-abs(vars[a_start + i]), 2);
 	  //add penalty for fast turns at high speed
 	  fg[0] += 2500*CppAD::pow(vars[delta_start + i] * vars[v_start + i], 2);	
     }
@@ -112,11 +112,12 @@ class FG_eval {
 		AD<double> delta0 = vars[delta_start + t - 1];
 		AD<double> a0 = vars[a_start + t - 1];
 		
-		//latency
+		//use previous values latency (given that dt and the latency are the same)
 		if (t > 1) {
-			a0 = vars[a_start + t - 2];
 			delta0 = vars[delta_start + t - 2];
+			a0 = vars[a_start + t - 2];
         }
+		
 		//AD<double> f0 = coeffs[0] + coeffs[1] * x0;
 		//AD<double> psides0 = CppAD::atan(coeffs[1]);
 		
