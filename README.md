@@ -43,7 +43,7 @@ To simplify the calculations the waypoints are transformed into the reference fr
 In this work the latency of 100ms is imposed. Accidentaly the step value dt is also chosen to be equal to 0.1 sec. This simplifies the implementation step to account for this latency by taking the actuation values shifted by one step dt (of course if time step is greater than 1). The code for this implementation can be found in the MPC.cpp file in lines 116-119.
 
 ## YouTube video of the final ride
-Click [here](https://youtu.be/g3HmccIpYwk) or on the image below to go to the YouTube video)<p>
+Click [here](https://youtu.be/g3HmccIpYwk) or on the image below to go to the YouTube video<p>
 [![MPC Track Ride](https://img.youtube.com/vi/g3HmccIpYwk/0.jpg)](https://youtu.be/g3HmccIpYwk)
 
 ---
